@@ -1,0 +1,5 @@
+Converted CodeDictionary.txt from XML to just a list of text strings, using convert-dict.py
+
+The list of text strings is irc_text_list.json
+
+pull-random.py loads up the json file with the list just once, when the program is first run, and then picks a random section
