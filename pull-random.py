@@ -27,32 +27,31 @@ def format_for_display(text, width=20):
 lcd_top = CharLCD(i2c_expander='PCF8574', address=0x27, port=1, cols=20, rows=4, dotsize=8)
 lcd_bottom = CharLCD(i2c_expander='PCF8574', address=0x26, port=1, cols=20, rows=4, dotsize=8)
 
-lcd_top.clear()
-lcd_bottom.clear()
-display_text = "HELLO CODE"
-lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)  # Row 1, centered
-lcd_top.write_string(display_text)
+def make_greeting():
+    lcd_top.clear()
+    lcd_bottom.clear()
+    lines = ["HELLO CODE", "a random walk", "through U.S. tax law"]
+    for row, text in enumerate(lines):
+        lcd_top.cursor_pos = (row, (20 - len(text)) // 2)
+        lcd_top.write_string(text)
+    time.sleep(5)
 
-time.sleep(10)
-
-current_section_lines = []
-current_section_number = ""
+make_greeting()
+time.sleep(5)
+    
+content = random.choice(code_list)
+current_section_number = content['title']
+current_section_lines = format_for_display(content['text'])
 section_position = 0
 
+lcd_top.clear()
+display_text = f"26 U.S.C. § {current_section_number[1:-1]}"
+lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)
+lcd_top.write_string(display_text)
+start_time = time.time()    
+
 while True:
-    # Get new section when current one is done
-    if section_position >= len(current_section_lines):
-        content = random.choice(code_list)
-        current_section_number = content['title']  # Just the § number
-        current_section_lines = format_for_display(content['text'])
-        section_position = 0
         
-        # Top screen: static display - only update on new section
-        lcd_top.clear()
-        display_text = f"26 U.S.C. {current_section_number}"
-        lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)  # Row 1, centered
-        lcd_top.write_string(display_text)
-    
     # Bottom screen: scrolling section text
     lcd_bottom.clear()
     for row in range(4):
@@ -62,3 +61,31 @@ while True:
     
     section_position += 1
     time.sleep(1)
+    
+    # Check if section finished
+    if section_position >= len(current_section_lines):
+        end_time = time.time()
+        total_time = int(end_time - start_time)
+        display_time_text = f"{total_time} seconds"
+        lcd_top.cursor_pos = (2, (20 - len(display_time_text)) // 2)
+        lcd_top.write_string(display_time_text)
+        time.sleep(5)
+
+        # sometimes throw up the greeting again, but for shorter
+        if random.randint(1,20) == 20:
+            make_greeting()
+
+        # start new code section
+        content = random.choice(code_list)
+        current_section_number = content['title']
+        current_section_lines = format_for_display(content['text'])
+        section_position = 0
+        
+        # Top screen: static display - only update on new section
+        lcd_top.clear()
+        display_text = f"26 U.S.C. § {current_section_number[1:-1]}"
+        lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)
+        lcd_top.write_string(display_text)
+        start_time = time.time()
+    
+    
