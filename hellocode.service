@@ -1,0 +1,14 @@
+
+[Unit]
+Description=Hello Code Display
+After=network.target
+
+[Service]
+Type=simple
+User=PINAME
+WorkingDirectory=/home/PINAME/hello-code
+ExecStart=/home/PINAME/.virtualenvs/randomenv/bin/python/home/
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

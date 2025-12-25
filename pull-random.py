@@ -3,8 +3,10 @@ import json
 import random
 import time
 
-# Load preprocessed IRC sections
-with open('Code26Dictionary.json', 'r', encoding='utf8') as fp:
+title_number = 26
+
+# Load preprocessed sections
+with open(f'Code{title_number}Dictionary.json', 'r', encoding='utf8') as fp:
     code_dict = json.load(fp)
     
 def format_for_display(text, width=20):
@@ -45,7 +47,7 @@ current_section_lines = format_for_display(code_dict[current_section_number])
 section_position = 0
 
 lcd_top.clear()
-display_text = f"26 U.S.C. {current_section_number}"
+display_text = f"{title_number} U.S.C. {current_section_number}"
 lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)
 lcd_top.write_string(display_text)
 start_time = time.time()    
@@ -81,7 +83,7 @@ while True:
         
         # Top screen: static display - only update on new section
         lcd_top.clear()
-        display_text = f"26 U.S.C. {current_section_number}"
+        display_text = f"{title_number} U.S.C. {current_section_number}"
         lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)
         lcd_top.write_string(display_text)
         start_time = time.time()
