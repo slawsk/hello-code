@@ -1,6 +1,10 @@
 ---
 title: Setting Up New Display
 ---
+
+*The below reflects my computer name, penguin; my wireless network,
+AgentChicken; and my router IP address range, 192.168.1.1. Change to match yours.*
+
 1. On the home computer, download the xml file for the title from [Office of Law Revision
 Counsel](https://uscode.house.gov/download/download.shtml).
 
@@ -31,10 +35,10 @@ reflect the correct dictionary.
 9. Go into .ssh/config and add (you may have to change pi_new to something else
    if you're doing this with a bunch of pis)
 
-Host pi_new
-   Hostname 192.168.1.200
-   User PINAME
-   ForwardX11 yes
+Host pi_new  
+   Hostname 192.168.1.200  
+   User PINAME  
+   ForwardX11 yes  
 
 10. Turn on the Pi so that it has an IP address.
 
@@ -47,17 +51,19 @@ ssh -X PINAME@PIADDRESS
 
 13. On first boot of the pi, on the Pi:
 
-cd ~
-chmod +x install_project_files.sh
-./install_project_files.sh
+cd ~  
+chmod +x install_project_files.sh  
+./install_project_files.sh  
 
 14. On the Pi, give the Pi a fixed IP address (below it's 200, same as the other Pi, because
 I'm assuming I won't ever run them at the same time)
 
-sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.addresses 192.168.1.200/24
-sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.gateway 192.168.1.1
-sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.dns "192.168.1.1 8.8.8.8"
-sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.method manual
+sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.addresses
+192.168.1.200/24  
+sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.gateway 192.168.1.1  
+sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.dns "192.168.1.1 
+8.8.8.8"  
+sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.method manual  
 sudo reboot
 
 15. Back on the home computer, set up the SSH key: 
