@@ -36,9 +36,9 @@ reflect the correct dictionary.
    if you're doing this with a bunch of pis)
 
 Host pi_new  
-   Hostname 192.168.1.200  
-   User PINAME  
-   ForwardX11 yes  
+    Hostname 192.168.1.200  
+    User PINAME  
+    ForwardX11 yes  
 
 10. Turn on the Pi so that it has an IP address.
 
@@ -83,8 +83,8 @@ name of the Pi.
 
 19. Still on the Pi: 
 
-sudo systemctl daemon-reload
-sudo systemctl enable hellocode.service
+sudo systemctl daemon-reload  
+sudo systemctl enable hellocode.service  
 sudo systemctl start hellocode.service
 
 Check status: sudo systemctl status hellocode.service
