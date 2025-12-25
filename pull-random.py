@@ -4,8 +4,8 @@ import random
 import time
 
 # Load preprocessed IRC sections
-with open('irc_text_list_with_titles.json', 'r', encoding='utf8') as fp:
-    code_list = json.load(fp)
+with open('Code26Dictionary.json', 'r', encoding='utf8') as fp:
+    code_dict = json.load(fp)
     
 def format_for_display(text, width=20):
     lines = []
@@ -39,19 +39,18 @@ def make_greeting():
 make_greeting()
 time.sleep(5)
     
-content = random.choice(code_list)
-current_section_number = content['title']
-current_section_lines = format_for_display(content['text'])
+# Fixed: use code_dict instead of code_list and div_library
+current_section_number = random.choice(list(code_dict.keys()))
+current_section_lines = format_for_display(code_dict[current_section_number])
 section_position = 0
 
 lcd_top.clear()
-display_text = f"26 U.S.C. {current_section_number[1:-1]}"
+display_text = f"26 U.S.C. {current_section_number}"
 lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)
 lcd_top.write_string(display_text)
 start_time = time.time()    
 
 while True:
-        
     # Bottom screen: scrolling section text
     lcd_bottom.clear()
     for row in range(4):
@@ -70,22 +69,19 @@ while True:
         lcd_top.cursor_pos = (2, (20 - len(display_time_text)) // 2)
         lcd_top.write_string(display_time_text)
         time.sleep(5)
-
+        
         # sometimes throw up the greeting again, but for shorter
-        if random.randint(1,20) == 20:
+        if random.randint(1, 20) == 20:
             make_greeting()
-
-        # start new code section
-        content = random.choice(code_list)
-        current_section_number = content['title']
-        current_section_lines = format_for_display(content['text'])
+        
+        # start new code section - Fixed variable names
+        current_section_number = random.choice(list(code_dict.keys()))
+        current_section_lines = format_for_display(code_dict[current_section_number])
         section_position = 0
         
         # Top screen: static display - only update on new section
         lcd_top.clear()
-        display_text = f"26 U.S.C. {current_section_number[1:-1]}"
+        display_text = f"26 U.S.C. {current_section_number}"
         lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)
         lcd_top.write_string(display_text)
         start_time = time.time()
-    
-    

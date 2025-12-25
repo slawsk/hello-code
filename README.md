@@ -6,22 +6,16 @@ This is the code for the wall display ```HELLO CODE```.
 *Do this only one time for each title. Right now, I've done this only for Title
 26, and that is the only dictionary in the repository.*
 
-Download the relevant code from the [Office of Law Revision Counsel](https://uscode.house.gov/).
+Download the relevant code from the [Office of Law Revision
+Counsel](https://uscode.house.gov/). Save it as ```usc{titlenumber}.xml```.
 
-Create the code dictionary from your title. ```create_code_dict.py```
-
-Convert CodeDictionary.txt from XML to just a list of text strings. ```convert-dict.py```
-
-Remove the repealed sections and create the list of dictionaries with section
-number key and text of section value. ```remove_repealed.py```
+Create the code dictionary from your title by running ```python
+create_json_dict.py {titlenumber}```
 
 # Running the Program
 
-```pull-random.py``` loads up the json file, which for the tax law is
-```irc_text_list_with_titles.json``` and picks a random section.
-
-Those two files are the only files that are used during the actual running of
-the program; the other files are to create the code dictionary.
+Run ```pull-random.py``` loads up the json file, which for the tax law is
+```CodeDictionary26.json``` and picks a random section.
 
 # Comments About Hardware
 
