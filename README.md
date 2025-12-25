@@ -14,8 +14,9 @@ create_json_dict.py {titlenumber}```.
 
 ## Running the Program
 
-Run ```pull-random.py``` loads up the json file, which for the tax law is
-```CodeDictionary26.json``` and picks a random section.
+```pull-random.py``` picks a random section from the code dictionary
+(```CodeDictionary26.json``` for the tax code) and
+sends the random section to the LCD screens. 
 
 ## Comments About Hardware
 
