@@ -1,7 +1,7 @@
 
 This is the code for the wall display ```HELLO CODE```.
 
-## Create the List of Sections
+## Create the Code Dictionary
  
 *Do this only one time for each title. Right now, I've done this only for Title
 26, and that is the only dictionary in the repository.*
