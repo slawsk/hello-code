@@ -1,5 +1,5 @@
 
-This is the code for the wall display "HELLO CODE."
+This is the code for the wall display "HELLO CODE." [View it in action.](https://youtu.be/2RdOh8mkhuI)
 
 ## Create the Code Dictionary
  
