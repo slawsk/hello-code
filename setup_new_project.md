@@ -2,8 +2,9 @@
 title: Setting Up New Display
 ---
 
-*The below reflects my computer name, penguin; my wireless network,
-AgentChicken; and my router IP address range, 192.168.1.1. Change to match yours.*
+*The below are instructions for me to remember how to do this again on my Linux
+operating system. This reflects my computer name, penguin; my wireless network,
+AgentChicken; and my local network range, 192.168.1.x.*
 
 1. On the home computer, download the xml file for the title from [Office of Law Revision
 Counsel](https://uscode.house.gov/download/download.shtml).
@@ -61,8 +62,7 @@ I'm assuming I won't ever run them at the same time)
 sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.addresses
 192.168.1.200/24  
 sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.gateway 192.168.1.1  
-sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.dns "192.168.1.1 
-8.8.8.8"  
+sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.dns "192.168.1.1 8.8.8.8"  
 sudo nmcli connection modify netplan-wlan0-AgentChicken ipv4.method manual  
 sudo reboot
 
