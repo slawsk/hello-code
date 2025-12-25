@@ -6,11 +6,9 @@ Counsel](https://uscode.house.gov/download/download.shtml).
 
 2. Name the file ```usc{titlenumber}.xml```
 
-3. Create the relevant code dictionary by running ```python create_code_dict.py```
-with the function ```createStatuteNoNotes(titlenumber)```---substitute the
-relevant statute number.
+3. Create the relevant code dictionary by running ```python create_json_dict.py {titlenumber}```
 
-4. Make the changes in ```pull_random.py```.
+4. Change ```pull_random.py```.
 
 - Change ```title_number``` at the top of the file.
 
