@@ -24,8 +24,8 @@ def format_for_display(text, width=20):
     
     return lines
 
-lcd_top = CharLCD(i2c_expander='PCF8574', address=0x27, port=1, cols=20, rows=4, dotsize=8)
-lcd_bottom = CharLCD(i2c_expander='PCF8574', address=0x26, port=1, cols=20, rows=4, dotsize=8)
+lcd_bottom = CharLCD(i2c_expander='PCF8574', address=0x27, port=1, cols=20, rows=4, dotsize=8)
+lcd_top = CharLCD(i2c_expander='PCF8574', address=0x26, port=1, cols=20, rows=4, dotsize=8)
 
 def make_greeting():
     lcd_top.clear()
@@ -45,7 +45,7 @@ current_section_lines = format_for_display(content['text'])
 section_position = 0
 
 lcd_top.clear()
-display_text = f"26 U.S.C. § {current_section_number[1:-1]}"
+display_text = f"26 U.S.C. {current_section_number[1:-1]}"
 lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)
 lcd_top.write_string(display_text)
 start_time = time.time()    
@@ -60,7 +60,7 @@ while True:
             lcd_bottom.write_string(current_section_lines[section_position + row])
     
     section_position += 1
-    time.sleep(1)
+    time.sleep(1.5)
     
     # Check if section finished
     if section_position >= len(current_section_lines):
@@ -83,7 +83,7 @@ while True:
         
         # Top screen: static display - only update on new section
         lcd_top.clear()
-        display_text = f"26 U.S.C. § {current_section_number[1:-1]}"
+        display_text = f"26 U.S.C. {current_section_number[1:-1]}"
         lcd_top.cursor_pos = (1, (20 - len(display_text)) // 2)
         lcd_top.write_string(display_text)
         start_time = time.time()
