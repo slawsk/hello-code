@@ -68,7 +68,7 @@ sudo reboot
 
 15. Back on the home computer, set up the SSH key: 
 
-ssh-keygen -R 192.168.1.200
+ssh-keygen -R 192.168.1.200  
 ssh-copy-id PINAME@192.168.1.200. 
 
 Then, after 30 seconds, reconnect: ssh pi_new
