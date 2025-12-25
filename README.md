@@ -4,9 +4,6 @@ This is the code for the wall display "HELLO CODE."
 [View it in action.](https://youtu.be/2RdOh8mkhuI)
 
 ## Create the Code Dictionary
- 
-*Do this only one time for each title. Right now, I've done this only for Title
-26, and that is the only dictionary in the repository.*
 
 Download the relevant XML file for the title you have selected from the [Office of Law Revision
 Counsel](https://uscode.house.gov/). Save it as ```usc{titlenumber}.xml```.

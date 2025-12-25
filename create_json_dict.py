@@ -25,12 +25,15 @@ def createStatuteNoNotes(titlenumber):
         num_tag = section.find('num')
         if num_tag is not None:
             section_number = num_tag.get('value')
-            num_tag.decompose()
             
+            if section_number is not None:
+                print(f"Section number: {repr(section_number)}")  # Debug
+                section_number = str(section_number).strip()
+            num_tag.decompose()
             section_text = section.get_text(separator=' ', strip=True)
             section_text = ' '.join(section_text.split())
             
-            if not section_text.lower().startswith('repealed'):
+            if section_number is not None and not section_text.lower().startswith('repealed'):
                 div_library[section_number] = section_text
     
     output_file = f'Code{titlenumber}Dictionary.json'

@@ -16,13 +16,15 @@ source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 echo "installing atuin"
 curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 
-mkdir hello-code
+mkdir -p hello-code
 
 cd hello-code
 
-wget https://raw.githubusercontent.com/slawsk/hello-code/main/Code26Dictionary.py
+wget https://raw.githubusercontent.com/slawsk/hello-code/main/Code47Dictionary.py
 
-wget https://raw.githubusercontent.com/slawsk/hello-code/main/pull-random.py
+wget https://raw.githubusercontent.com/slawsk/hello-code/main/pull-random-telecom.py
+
+mv pull-random-telecom.py pull-random.py
 
 wget https://raw.githubusercontent.com/slawsk/hello-code/main/requirements.txt
 
