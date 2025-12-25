@@ -28,4 +28,5 @@ and 0x26) for my hardware; yours may differ.
 I have added details about setting up the new project in
 ```setup_new_project.md```, mostly for myself to remember, so it's specific to
 my operating system, computer, WiFi network, etc. It shows how to configure
-```pull-random.py``` to run on boot, among other things.
+```pull-random.py``` to run on boot, among other things; that's what the
+```hellocode.service``` file is for.
