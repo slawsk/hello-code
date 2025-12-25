@@ -1,5 +1,7 @@
 
-This is the code for the wall display "HELLO CODE." [View it in action.](https://youtu.be/2RdOh8mkhuI)
+This is the code for the wall display "HELLO CODE." 
+
+[View it in action.](https://youtu.be/2RdOh8mkhuI)
 
 ## Create the Code Dictionary
  
@@ -15,13 +17,15 @@ create_json_dict.py {titlenumber}```.
 ## Running the Program
 
 ```pull-random.py``` picks a random section from the code dictionary
-(```CodeDictionary26.json``` for the tax code) and
+(```Code26Dictionary.json``` for the tax code) and
 sends the random section to the LCD screens. 
 
 ## Considerations re Code and Setup
 
-Consider configuring your system so ```pull-random.py``` runs on boot.
-
 The code reflects the specific I2C expander chip (PCF8574) and addresses (0x27
 and 0x26) for my hardware; yours may differ.
 
+I have added details about setting up the new project in
+```setup_new_project.md```, mostly for myself to remember, so it's specific to
+my operating system, computer, WiFi network, etc. It shows how to configure
+```pull-random.py``` to run on boot, among other things.
